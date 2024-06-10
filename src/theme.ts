@@ -1,6 +1,15 @@
-const theme = {
-  fontSizes: { lg: "18px" },
-  colors: { gray: { 100: "#fafafa", 200: "#f7f7f7" } },
-};
+import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  semanticTokens: {
+    colors: {
+      error: "red.500",
+      text: {
+        default: "gray.900",
+        _dark: "gray.50",
+      },
+    },
+  },
+});
 
 export default theme;
