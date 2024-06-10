@@ -4,7 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 
 export default function Page() {
   return (
-    <Box>
+    <Box color="gray.100">
       <Text
         bgGradient="linear(to-l, #7928CA, #FF0080)"
         bgClip="text"
