@@ -4,7 +4,7 @@ import { Box, Image, Text } from "@chakra-ui/react";
 
 export default function Page() {
   return (
-    <Box p={4} display={{ md: "flex" }}>
+    <Box p={4} display={{ md: "flex" }} color="text">
       <Box flexShrink={0}>
         <Image
           borderRadius="lg"
