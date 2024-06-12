@@ -1,8 +1,14 @@
-import { extendTheme } from "@chakra-ui/react";
-import Button from "./components/button";
+import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
 
-const theme = extendTheme({
-  components: { Button },
-});
+const theme = extendTheme(
+  withDefaultColorScheme({
+    colorScheme: "red",
+    components: ["Button", "Badge"],
+  }),
+  withDefaultColorScheme({
+    colorScheme: "blue",
+    components: ["Alert", "Table"],
+  })
+);
 
 export default theme;
