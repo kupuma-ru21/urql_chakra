@@ -1,13 +1,9 @@
-import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
+import { extendTheme, withDefaultVariant } from "@chakra-ui/react";
 
 const theme = extendTheme(
-  withDefaultColorScheme({
-    colorScheme: "red",
-    components: ["Button", "Badge"],
-  }),
-  withDefaultColorScheme({
-    colorScheme: "blue",
-    components: ["Alert", "Table"],
+  withDefaultVariant({
+    variant: "outline",
+    components: ["Input", "NumberInput", "PinInput"],
   })
 );
 

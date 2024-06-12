@@ -1,11 +1,10 @@
 "use client";
-import { Alert, Button } from "@chakra-ui/react";
+import { Alert, Button, Input } from "@chakra-ui/react";
 
 export default function Page() {
   return (
     <>
-      <Button>Button</Button>
-      <Alert>Alert</Alert>
+      <Input variant="filled" />
     </>
   );
 }
