@@ -1,13 +1,18 @@
 "use client";
-import { Heading, Image, Stack, Text } from "@chakra-ui/react";
+import { Button, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { UserDefined } from "./components/UserDefined";
+import { Menu, MenuItem } from "./components/Menu";
 
 export default function Page() {
   return (
-    <Stack direction="row">
-      <Usage1 />
-      <Usage2 />
-    </Stack>
+    <>
+      <Stack direction="row">
+        <Usage1 />
+        <Usage2 />
+      </Stack>
+      <Usage3 />
+      <Usage4 />
+    </>
   );
 }
 
@@ -52,5 +57,25 @@ function Usage2() {
       </Text>
       <Image src="/207794.jpeg" w={32} h={32} alt="usage2-2" />
     </UserDefined>
+  );
+}
+
+// 1. Using the default props defined in style config
+function Usage3() {
+  return (
+    <Menu size="sm" variant="bold">
+      <MenuItem>Awesome</MenuItem>
+      <MenuItem>Sauce</MenuItem>
+    </Menu>
+  );
+}
+
+// 2. Overriding the default
+function Usage4() {
+  return (
+    <Menu size="md" variant="colorful">
+      <MenuItem>Awesome</MenuItem>
+      <MenuItem>Sauce</MenuItem>
+    </Menu>
   );
 }

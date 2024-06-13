@@ -1,6 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
 import { Button } from "./components/button";
 import { UserDefined } from "./components/user-defined";
+import { Menu } from "./components/menu";
 
 const theme = extendTheme({
   components: {
@@ -13,6 +14,7 @@ const theme = extendTheme({
     That's why it doesn't work.
    */
     UserDefined,
+    Menu,
   },
 });
 
