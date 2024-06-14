@@ -1,39 +1,42 @@
 "use client";
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
+  AddIcon,
+  EditIcon,
+  ExternalLinkIcon,
+  HamburgerIcon,
+  RepeatIcon,
+} from "@chakra-ui/icons";
+import {
+  IconButton,
   Menu,
   MenuButton,
-  MenuDivider,
   MenuItem,
   MenuList,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { useRef } from "react";
 
 export default function Page() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef(null);
-
   return (
     <Menu>
       <MenuButton
-        px={4}
-        py={2}
-        transition="all 0.2s"
-        borderRadius="md"
-        borderWidth="1px"
-        _hover={{ bg: "gray.400" }}
-        _expanded={{ bg: "blue.400" }}
-        _focus={{ boxShadow: "outline" }}
-      >
-        File <ChevronDownIcon />
-      </MenuButton>
+        as={IconButton}
+        aria-label="Options"
+        icon={<HamburgerIcon />}
+        variant="outline"
+      />
       <MenuList>
-        <MenuItem>New File</MenuItem>
-        <MenuItem>New Window</MenuItem>
-        <MenuDivider />
-        <MenuItem>Open...</MenuItem>
-        <MenuItem>Save File</MenuItem>
+        <MenuItem icon={<AddIcon />} command="⌘T">
+          New Tab
+        </MenuItem>
+        <MenuItem icon={<ExternalLinkIcon />} command="⌘N">
+          New Window
+        </MenuItem>
+        <MenuItem icon={<RepeatIcon />} command="⌘⇧N">
+          Open Closed Tab
+        </MenuItem>
+        <MenuItem icon={<EditIcon />} command="⌘O">
+          Open File...
+        </MenuItem>
       </MenuList>
     </Menu>
   );
