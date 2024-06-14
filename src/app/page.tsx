@@ -1,14 +1,11 @@
 "use client";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  Input,
+  Menu,
+  MenuButton,
+  MenuDivider,
+  MenuItem,
+  MenuList,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef } from "react";
@@ -18,33 +15,26 @@ export default function Page() {
   const btnRef = useRef(null);
 
   return (
-    <>
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-        Open
-      </Button>
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
+    <Menu>
+      <MenuButton
+        px={4}
+        py={2}
+        transition="all 0.2s"
+        borderRadius="md"
+        borderWidth="1px"
+        _hover={{ bg: "gray.400" }}
+        _expanded={{ bg: "blue.400" }}
+        _focus={{ boxShadow: "outline" }}
       >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-
-          <DrawerBody>
-            <Input placeholder="Type here..." />
-          </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-    </>
+        File <ChevronDownIcon />
+      </MenuButton>
+      <MenuList>
+        <MenuItem>New File</MenuItem>
+        <MenuItem>New Window</MenuItem>
+        <MenuDivider />
+        <MenuItem>Open...</MenuItem>
+        <MenuItem>Save File</MenuItem>
+      </MenuList>
+    </Menu>
   );
 }
