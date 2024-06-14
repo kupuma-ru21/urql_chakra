@@ -2,6 +2,9 @@
 import {
   Box,
   Button,
+  FormControl,
+  FormLabel,
+  Input,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,33 +16,46 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 
-export default function Page() {
+export default function InitialFocus() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const initialRef = useRef(null);
   const finalRef = useRef(null);
 
   return (
     <>
-      <Box ref={finalRef} tabIndex={-1} aria-label="Focus moved to this box">
-        Some other content that&apos;ll receive focus on close.
-      </Box>
-
-      <Button mt={4} onClick={onOpen}>
-        Open Modal
+      <Button onClick={onOpen}>Open Modal</Button>
+      <Button ml={4} ref={finalRef}>
+        I&apos;ll receive focus on close
       </Button>
-      <Modal finalFocusRef={finalRef} isOpen={isOpen} onClose={onClose}>
+
+      <Modal
+        initialFocusRef={initialRef}
+        finalFocusRef={finalRef}
+        isOpen={isOpen}
+        onClose={onClose}
+      >
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Create your account</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest&apos;test
+          <ModalBody pb={6}>
+            <FormControl>
+              <FormLabel>First name</FormLabel>
+              <Input ref={initialRef} placeholder="First name" />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>Last name</FormLabel>
+              <Input placeholder="Last name" />
+            </FormControl>
           </ModalBody>
 
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
+            <Button colorScheme="blue" mr={3}>
+              Save
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
+            <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
