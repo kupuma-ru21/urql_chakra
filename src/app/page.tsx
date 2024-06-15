@@ -1,57 +1,17 @@
 "use client";
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverFooter,
-  PopoverHeader,
-  PopoverTrigger,
-} from "@chakra-ui/react";
-import { useRef } from "react";
+import { Avatar, AvatarGroup } from "@chakra-ui/react";
 
 export default function Page() {
-  // ref does't work => https://github.com/chakra-ui/chakra-ui/issues/7976
-  const initialFocusRef = useRef(null);
+  const handleClick = () => {
+    console.log("Button clicked");
+  };
   return (
-    <Popover
-      initialFocusRef={initialFocusRef}
-      placement="bottom"
-      closeOnBlur={false}
-    >
-      <PopoverTrigger>
-        <Button>Trigger</Button>
-      </PopoverTrigger>
-      <PopoverContent color="white" bg="blue.800" borderColor="blue.800">
-        <PopoverHeader pt={4} fontWeight="bold" border="0">
-          Manage Your Channels
-        </PopoverHeader>
-        <PopoverArrow bg="blue.800" />
-        <PopoverCloseButton />
-        <PopoverBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore.
-        </PopoverBody>
-        <PopoverFooter
-          border="0"
-          display="flex"
-          alignItems="center"
-          justifyContent="space-between"
-          pb={4}
-        >
-          <Box fontSize="sm">Step 2 of 4</Box>
-          <ButtonGroup size="sm">
-            <Button colorScheme="green">Setup Email</Button>
-            <Button colorScheme="blue" ref={initialFocusRef}>
-              Next
-            </Button>
-          </ButtonGroup>
-        </PopoverFooter>
-      </PopoverContent>
-    </Popover>
+    <AvatarGroup size="md" max={3}>
+      <Avatar name="Ryan Florence" src="https://bit.ly/ryan-florence" />
+      <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" />
+      <Avatar name="Kent Dodds" src="https://bit.ly/kent-c-dodds" />
+      <Avatar name="Prosper Otemuyiwa" src="https://bit.ly/prosper-baba" />
+      <Avatar name="Christian Nwamba" src="https://bit.ly/code-beast" />
+    </AvatarGroup>
   );
 }
