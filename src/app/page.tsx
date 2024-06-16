@@ -6,20 +6,14 @@ import { useRef } from "react";
 export default function Page() {
   const ref = useRef(null);
   return (
-    <Box bg="red.400" color="white">
-      I&apos;m here,
+    <div>
       <Portal containerRef={ref}>
-        Portal: This text is portaled to the yellow box!
+        <Box bg="teal.500" color="white">
+          <Portal>Child: I&apos;m attached to my parent portal</Portal>
+          Parent: Hey welcome,
+        </Box>
       </Portal>
-      <Box ref={ref} bg="yellow.500">
-        <div>Container: Hey,</div>
-      </Box>
-    </Box>
+      <Box bg="red.400" color="white" ref={ref} />
+    </div>
   );
 }
-
-const steps = [
-  { title: "First", description: "Contact Info" },
-  { title: "Second", description: "Date & Time" },
-  { title: "Third", description: "Select Rooms" },
-];
