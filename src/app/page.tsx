@@ -1,14 +1,18 @@
 "use client";
 
-import { useConst } from "@chakra-ui/react";
+import { Box, Button, useControllableState } from "@chakra-ui/react";
 
 export default function Page() {
-  const mountTime = useConst(() => new Date().toTimeString());
-  const obj = useConst({ a: 100 });
+  const [value, setValue] = useControllableState({ defaultValue: 40 });
+  console.log("value", value);
+
   return (
-    <>
-      <p>Mount time: {mountTime}</p>
-      <p>Value from constant object: {obj.a}</p>
-    </>
+    <div>
+      <Button onClick={() => setValue(value + 1)}>+</Button>
+      <Box as="span" w="200px" mx="24px">
+        {value}
+      </Box>
+      <Button onClick={() => setValue(value - 1)}>-</Button>
+    </div>
   );
 }
