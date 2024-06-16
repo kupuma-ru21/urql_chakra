@@ -1,22 +1,17 @@
 "use client";
+import { Image, keyframes, usePrefersReducedMotion } from "@chakra-ui/react";
 
-import { useOutsideClick } from "@chakra-ui/react";
-import { useRef, useState } from "react";
+const spin = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+`;
 
-export default function Example() {
-  const ref = useRef(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  useOutsideClick({ ref, handler: () => setIsModalOpen(false) });
+export default function Page() {
+  const prefersReducedMotion = usePrefersReducedMotion();
 
-  return (
-    <>
-      {isModalOpen ? (
-        <div ref={ref}>
-          👋 Hey, I&apos;m a modal. Click anywhere outside of me to close.
-        </div>
-      ) : (
-        <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
-      )}
-    </>
-  );
+  const animation = prefersReducedMotion
+    ? undefined
+    : `${spin} infinite 20s linear`;
+
+  return <Image animation={animation} src="/207794.jpeg" alt="test" />;
 }
