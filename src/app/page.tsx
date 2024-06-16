@@ -1,24 +1,20 @@
 "use client";
 
-import {
-  RangeSlider,
-  RangeSliderFilledTrack,
-  RangeSliderThumb,
-  RangeSliderTrack,
-} from "@chakra-ui/react";
+import { Box, Portal } from "@chakra-ui/react";
+import { useRef } from "react";
 
 export default function Page() {
+  const ref = useRef(null);
   return (
-    <RangeSlider
-      aria-label={["min", "max"]}
-      onChangeEnd={(val) => console.log(val)}
-    >
-      <RangeSliderTrack>
-        <RangeSliderFilledTrack />
-      </RangeSliderTrack>
-      <RangeSliderThumb index={0} />
-      <RangeSliderThumb index={1} />
-    </RangeSlider>
+    <Box bg="red.400" color="white">
+      I&apos;m here,
+      <Portal containerRef={ref}>
+        Portal: This text is portaled to the yellow box!
+      </Portal>
+      <Box ref={ref} bg="yellow.500">
+        <div>Container: Hey,</div>
+      </Box>
+    </Box>
   );
 }
 
