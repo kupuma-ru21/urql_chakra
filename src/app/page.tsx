@@ -1,26 +1,22 @@
 "use client";
 
-import { Box, Button, useControllableState } from "@chakra-ui/react";
-import { useState } from "react";
+import { useOutsideClick } from "@chakra-ui/react";
+import { useRef, useState } from "react";
 
-export default function Page() {
-  // you need a state and updater to change the value
-  const [value, setValue] = useState(40);
-
-  const [internalValue, setInternalValue] = useControllableState({
-    value,
-    onChange: setValue,
-  });
-
-  console.log("internalValue", internalValue);
+export default function Example() {
+  const ref = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  useOutsideClick({ ref, handler: () => setIsModalOpen(false) });
 
   return (
-    <div>
-      <Button onClick={() => setInternalValue(value + 1)}>+</Button>
-      <Box as="span" w="200px" mx="24px">
-        {internalValue}
-      </Box>
-      <Button onClick={() => setInternalValue(value - 1)}>-</Button>
-    </div>
+    <>
+      {isModalOpen ? (
+        <div ref={ref}>
+          👋 Hey, I&apos;m a modal. Click anywhere outside of me to close.
+        </div>
+      ) : (
+        <button onClick={() => setIsModalOpen(true)}>Open Modal</button>
+      )}
+    </>
   );
 }
