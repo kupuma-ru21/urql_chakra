@@ -9,11 +9,13 @@ export default function Page() {
     <div>
       <Portal containerRef={ref}>
         <Box bg="teal.500" color="white">
-          <Portal>Child: I&apos;m attached to my parent portal</Portal>
           Parent: Hey welcome,
+          <Portal appendToParentPortal={false}>
+            Child: I&apos;m going to document.body
+          </Portal>
         </Box>
       </Portal>
-      <Box bg="red.400" color="white" ref={ref} />
+      <div style={{ background: "red" }} ref={ref} />
     </div>
   );
 }
