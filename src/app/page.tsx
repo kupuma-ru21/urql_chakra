@@ -1,21 +1,20 @@
 "use client";
 
-import { Box, Portal } from "@chakra-ui/react";
-import { useRef } from "react";
+import { Button, Collapse, useDisclosure } from "@chakra-ui/react";
 
 export default function Page() {
-  const ref = useRef(null);
+  const { isOpen, onToggle } = useDisclosure();
+
   return (
-    <div>
-      <Portal containerRef={ref}>
-        <Box bg="teal.500" color="white">
-          Parent: Hey welcome,
-          <Portal appendToParentPortal={false}>
-            Child: I&apos;m going to document.body
-          </Portal>
-        </Box>
-      </Portal>
-      <div style={{ background: "red" }} ref={ref} />
-    </div>
+    <>
+      <Collapse startingHeight={20} in={isOpen}>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+        terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+        labore wes anderson cred nesciunt sapiente ea proident.
+      </Collapse>
+      <Button size="sm" onClick={onToggle} mt="1rem">
+        Show {isOpen ? "Less" : "More"}
+      </Button>
+    </>
   );
 }
