@@ -1,6 +1,6 @@
 // app/layout.tsx
 import { fonts } from "./fonts";
-import { ChakraProvider } from "./components/ChakraProvider";
+import { ChakraProvider } from "./providers/ChakraProvider";
 
 export default function RootLayout({
   children,
